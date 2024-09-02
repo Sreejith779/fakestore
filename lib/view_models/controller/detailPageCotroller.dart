@@ -7,8 +7,14 @@ class DetailPageController extends GetxController{
  Rx<ProductModel> product = ProductModel().obs;
 
 void addToCart(ProductModel product){
+
+
+ if(cartList.contains(product)){
+  return null;
+ }else{
  cartList.add(product);
- print(cartList);
+ print(cartList);}
+ Get.snackbar("Added Successfully", "item added successfully");
 }
 
 }

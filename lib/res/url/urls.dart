@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class AppURL {
   static String loginUrl = "https://fakestoreapi.com/auth/login";

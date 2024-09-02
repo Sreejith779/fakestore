@@ -39,14 +39,18 @@ class Routes extends StatelessWidget {
             onDestinationSelected: (value){
                routeController.updateIndex(value);
             },
-            destinations: const [
-              NavigationDestination(icon: Icon(Icons.home),
+            destinations:   [
+              NavigationDestination(icon: Image.asset("assets/home.png",
+              height: 22,),
                   label: "Home"),
-              NavigationDestination(icon: Icon(Icons.search),
+              NavigationDestination(icon: Image.asset("assets/search.png",
+              height: 22,),
                   label: "Search"),
-              NavigationDestination(icon: Icon(Icons.shopping_bag),
+              NavigationDestination(icon: Image.asset("assets/bag.png",
+              height: 23,),
                   label: "Cart"),
-              NavigationDestination(icon: Icon(Icons.person),
+              NavigationDestination(icon:  Image.asset("assets/person.png",
+              height: 22,),
                   label: "Account"),
 
             ],

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:getx_hr_management/data/network_apiServices.dart';
-import 'package:getx_hr_management/res/url/urls.dart';
 
 class CategoryRepository {
   final _apiServices = NetworkApiServices();

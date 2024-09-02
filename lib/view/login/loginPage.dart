@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_hr_management/res/routes/routes.dart';
-import 'package:getx_hr_management/res/routes/routes_names.dart';
 import 'package:getx_hr_management/view/login/widgets/email_widget.dart';
 import 'package:getx_hr_management/view/login/widgets/loginButton.dart';
 import 'package:getx_hr_management/view/login/widgets/pass_widget.dart';

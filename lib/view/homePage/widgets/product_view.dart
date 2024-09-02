@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:getx_hr_management/res/categoryImage/categoryImg.dart';
 import 'package:getx_hr_management/res/routes/routes_names.dart';
 import 'package:getx_hr_management/res/utils/texts.dart';
-import 'package:getx_hr_management/view/category/categoryPage.dart';
 import 'package:getx_hr_management/view/detailPage/detailPage.dart';
 import 'package:getx_hr_management/view_models/controller/categoryController.dart';
 import 'package:getx_hr_management/view_models/controller/detailPageCotroller.dart';
@@ -37,7 +36,7 @@ class ProductView extends StatelessWidget {
           children: [
             Container(
               height: height * 0.15,
-              width: width * 0.98,
+              width: double.maxFinite,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image:
@@ -49,10 +48,14 @@ class ProductView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const Text("Shop By Category",
-            style: TextStyles.bText,),
+            const Padding(
+              padding: EdgeInsets.only(left: 10,right: 10),
+              child: Text("Shop By Category",
+              style: TextStyles.bText,),
+            ),
             const SizedBox(height: 10),
-            SizedBox(
+            Container(
+              margin: EdgeInsets.only(left: 10,right: 20),
               height: height * 0.12,
               width: width * 0.98,
               child: Row(
@@ -88,119 +91,122 @@ class ProductView extends StatelessWidget {
                    ))
               ),
             ),
-            GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.7,
-              ),
-              itemCount: homeController.allProductList.length,
-              itemBuilder: (BuildContext context, index) {
-                var product = homeController.allProductList[index];
+            Container(
+              margin: EdgeInsets.only(left: 8,right: 8),
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.7,
+                ),
+                itemCount: homeController.allProductList.length,
+                itemBuilder: (BuildContext context, index) {
+                  var product = homeController.allProductList[index];
 
-                return GestureDetector(
-                  onTap: (){
-                    if(homeController.allProductList[index]!=null){
-                      detailPageController.product.value = product;
-                       // detailPageController.product.assignAll({
-                       //   "id" : product.id,
-                       // "title" : product.title,
-                       // "image" : product.image,
-                       // "description" : product.description,
-                       // "price" : product.price});
-                       print(detailPageController.product);
-                    }
-                    Get.to(DetailPage());
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(10),
-                       color: Colors.white,
-                     ),
+                  return GestureDetector(
+                    onTap: (){
+                      if(homeController.allProductList[index]!=null){
+                        detailPageController.product.value = product;
+                         // detailPageController.product.assignAll({
+                         //   "id" : product.id,
+                         // "title" : product.title,
+                         // "image" : product.image,
+                         // "description" : product.description,
+                         // "price" : product.price});
+                         print(detailPageController.product);
+                      }
+                      Get.to(DetailPage());
+                    },
                     child: Container(
-                      margin: EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Image.network(
-                              product.image.toString(),
-                              height: height * 0.15,
-                              width: width * 0.98,
-                              loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) {
-                                  return child;
-                                } else {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
-                                }
-                              },
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(
-                                  Icons.error,
-                                  color: Colors.red,
-                                );
-                              },
+                      margin: const EdgeInsets.all(5),
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(10),
+                         color: Colors.white,
+                       ),
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Image.network(
+                                product.image.toString(),
+                                height: height * 0.15,
+                                width: width * 0.98,
+                                loadingBuilder: (context, child, loadingProgress) {
+                                  if (loadingProgress == null) {
+                                    return child;
+                                  } else {
+                                    return const Center(
+                                        child: CircularProgressIndicator());
+                                  }
+                                },
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Icon(
+                                    Icons.error,
+                                    color: Colors.red,
+                                  );
+                                },
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            truncateWithEllipsis(30, product.title.toString()),
-                            style: TextStyles.bText,
-                          ),
-                          const SizedBox(height: 5),
+                            const SizedBox(height: 5),
+                            Text(
+                              truncateWithEllipsis(30, product.title.toString()),
+                              style: TextStyles.bText,
+                            ),
+                            const SizedBox(height: 5),
 
-                          const SizedBox(height: 5),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(Icons.star,color: Colors.orange,),
-                                  Text("${product.rating!.rate.toString()} | ${product.rating!.count}"),
-                                ],
-                              ),
-
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     homeController.addToCart(
-                              //         homeController.allProductList[index]);
-                              //   },
-                              //   child: Container(
-                              //     width: width * 0.3,
-                              //     height: height * 0.045,
-                              //     decoration: BoxDecoration(
-                              //       color: Colors.deepPurple.shade400,
-                              //       borderRadius: BorderRadius.circular(10),
-                              //     ),
-                              //     child: Center(
-                              //       child: Text(
-                              //         "Add to Cart",
-                              //         style: TextStyles.bText
-                              //             .copyWith(color: Colors.white),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                              Text(
-                                "\$${product.price}",
-                                style: TextStyles.bText.copyWith(
-                                  fontSize: 20,
-                                  color: Colors.green
+                            const SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(Icons.star,color: Colors.orange,),
+                                    Text("${product.rating!.rate.toString()} | ${product.rating!.count}"),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+
+                                // GestureDetector(
+                                //   onTap: () {
+                                //     homeController.addToCart(
+                                //         homeController.allProductList[index]);
+                                //   },
+                                //   child: Container(
+                                //     width: width * 0.3,
+                                //     height: height * 0.045,
+                                //     decoration: BoxDecoration(
+                                //       color: Colors.deepPurple.shade400,
+                                //       borderRadius: BorderRadius.circular(10),
+                                //     ),
+                                //     child: Center(
+                                //       child: Text(
+                                //         "Add to Cart",
+                                //         style: TextStyles.bText
+                                //             .copyWith(color: Colors.white),
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
+                                Text(
+                                  "\$${product.price}",
+                                  style: TextStyles.bText.copyWith(
+                                    fontSize: 20,
+                                    color: Colors.green
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ],
         ),

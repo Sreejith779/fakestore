@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_hr_management/view/route/bottomSheet.dart';
 import 'package:getx_hr_management/view/homePage/widgets/product_view.dart';
 import 'package:getx_hr_management/view_models/controller/homeController.dart';
 import 'package:lottie/lottie.dart';
@@ -25,7 +24,7 @@ class HomePage extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        margin: const EdgeInsets.all(5),
+
         child: Column(children: [
           Obx(() => homeController.isLoading.value
               ? const Expanded(child: ProductView())

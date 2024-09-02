@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_hr_management/view_models/controller/detailPageCotroller.dart';
-import 'package:getx_hr_management/view_models/controller/homeController.dart';
 
 import '../../res/utils/texts.dart';
 import '../../view_models/controller/searchController.dart';

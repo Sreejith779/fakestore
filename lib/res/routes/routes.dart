@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:getx_hr_management/res/routes/routes_names.dart';
-import 'package:getx_hr_management/view/cartPage/cartPage.dart';
 import 'package:getx_hr_management/view/category/categoryPage.dart';
 import 'package:getx_hr_management/view/detailPage/detailPage.dart';
 import 'package:getx_hr_management/view/homePage/homePage.dart';
@@ -8,7 +7,6 @@ import 'package:getx_hr_management/view/registerPage/registerPage.dart';
 import 'package:getx_hr_management/view/route/bottomSheet.dart';
 import 'package:getx_hr_management/view/login/loginPage.dart';
 import 'package:getx_hr_management/view/searchPage/searchPage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AppRoute {
   static appRoute() => [

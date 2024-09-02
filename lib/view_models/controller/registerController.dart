@@ -2,9 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:getx_hr_management/data/network_apiServices.dart';
 import 'package:getx_hr_management/repository/register_repository/register_repository.dart';
-import 'package:getx_hr_management/view/homePage/homePage.dart';
 import 'package:getx_hr_management/view/route/bottomSheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
